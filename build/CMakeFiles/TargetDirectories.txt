@@ -1,0 +1,3 @@
+/home/henning/Documents/prosjektet/build/CMakeFiles/edit_cache.dir
+/home/henning/Documents/prosjektet/build/CMakeFiles/rebuild_cache.dir
+/home/henning/Documents/prosjektet/build/CMakeFiles/testAMPL.dir

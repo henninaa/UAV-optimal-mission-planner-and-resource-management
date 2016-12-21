@@ -1,0 +1,29 @@
+
+# Reset Memory
+reset ;
+
+# Load Model
+model model.mod;
+data model.dat;
+data chix.dat;
+data chiy.dat;
+data chiz.dat;
+
+# Set Up Configurations (optional)
+option solver 'cplex';
+
+# Solve Problem
+solve;
+
+# Display Results
+
+display pos;
+display v;
+display V;
+display theta_finnish;
+display bwp;
+display eta_finnish;
+display Jacc;
+display J_finnish;
+display x;
+expand sysmodel;

@@ -1,0 +1,18 @@
+function [ ] = saveToFile( lat, long )
+%SAVETOFILE Summary of this function goes here
+%   Detailed explanation goes here
+
+lat1
+
+saveSucess = false;
+    while saveSucess == false
+         saveSucess = true;
+        try
+            save('A.txt', 'lat', 'long', '-ascii', '-append');
+        catch
+            saveSucess = false;
+        end
+    end
+
+end
+

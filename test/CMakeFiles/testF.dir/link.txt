@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/testF.dir/test.cpp.o  -o testF -rdynamic /home/henning/Documents/prosjektet/ampl/amplapi/lib/libampl.so -Wl,-rpath,/home/henning/Documents/prosjektet/ampl/amplapi//lib 

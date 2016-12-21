@@ -1,0 +1,32 @@
+function [ ] = saveFile( fileName, n, lat, long )
+%SAVEFILE Summary of this function goes here
+%   Detailed explanation goes here
+
+
+saveSucess = false;
+    while saveSucess == false
+         saveSucess = true;
+        try
+            save(strcat(fileName, '.txt'), 'n', '-ascii');
+        catch
+            saveSucess = false;
+        end
+    end
+    
+    for j = 1:n
+       saveToFile(lat(j,:,:), mat2(j,:,:)); 
+    end
+
+
+    saveSucess = false;
+    while saveSucess == false
+         saveSucess = true;
+        try
+            save(strcat(fileName, '.mat'), 'n', 'mat1', 'mat2');
+        catch
+            saveSucess = false;
+        end
+    end
+    
+end
+

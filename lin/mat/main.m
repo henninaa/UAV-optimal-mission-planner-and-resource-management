@@ -1,0 +1,52 @@
+close all; clear all;
+
+global simTime tickLength tickCount;
+simTime = 100;
+tickLength = 1;
+tickCount = 0;
+realTime = true;
+numberOfUAVs = 2;
+
+%init ships
+shipsList = ShipsList([0; 0; 0]);
+shipsList = shipsList.addShip([400; 400; 0]);
+shipsList = shipsList.setGoal(1, [200;200;0]);
+shipsList = shipsList.setGoal(2, [200;200;0]);
+
+%init UAVs
+allUAVs = UAVlist(numberOfUAVs, 20, 0, 20, 30, 10);
+allUAVs = allUAVs.setInitialState(1, [110; 110; 10; 1; 0; 0], [5; 0; 0; 0; 0; 0]);
+allUAVs = allUAVs.setInitialState(2, [210; 110; 10; 0; 0; 0], [10; 0; 0; 0; 0; 0]);
+
+%init plotter
+plotter = Plotter();
+plotter = plotter.setBase([10; 10; 0]);
+
+
+%main loop
+for i=1:simTime/tickLength
+    tickCount = i;
+    tic
+    
+    
+    [A_lat, A_long] = allUAVs.getAmatrices();
+    [B_lat, B_long] = allUAVs.getBmatrices();
+    
+    saveFile('transfer/A', numberOfUAVs, A_lat, A_long);
+    saveFile('transfer/B', numberOfUAVs, B_lat, B_long);
+    
+    [shipsList] = shipsList.tick();
+    [allUAVs] = allUAVs.tick();
+    toc
+    while toc < tickLength && realTime
+        
+        pause(0.001)
+    end
+    
+    results2 = allUAVs.getResults();
+    results = shipsList.getResults();
+    plotter = plotter.addShipData(extractVector(results(:, i,:)));
+    plotter = plotter.addUAVData(extractVector(results2(:, i,:)));
+    plotter.plot3D(2);
+
+end %main loop end

@@ -1,0 +1,3 @@
+/home/henning/Documents/prosjektet/test/CMakeFiles/rebuild_cache.dir
+/home/henning/Documents/prosjektet/test/CMakeFiles/edit_cache.dir
+/home/henning/Documents/prosjektet/test/CMakeFiles/testF.dir
